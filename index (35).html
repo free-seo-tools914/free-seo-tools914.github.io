@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free SEO Tools – Meta Tag Generator, Keyword Checker & More</title>
+  <meta name="description" content="Free online SEO tools: Meta Tag Generator, Keyword Density Checker, Word Counter, Character Counter, and Sitemap Generator. No signup required." />
+  <meta name="keywords" content="free seo tools, meta tag generator, keyword density checker, word counter, sitemap generator" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Free SEO Tools Online" />
+  <meta property="og:description" content="Free online SEO tools for bloggers and website owners." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://yourusername.github.io/" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --radius: 12px;
+    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* HEADER */
+    header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header p { font-size: 0.85rem; opacity: 0.85; }
+    nav { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; font-size: 0.85rem; opacity: 0.85; padding: 4px 10px; border-radius: 6px; transition: background 0.2s; }
+    nav a:hover { background: rgba(255,255,255,0.2); opacity: 1; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 3rem 2rem 2rem; }
+    .hero h2 { font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+
+    /* TOOL GRID */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+
+    /* CARDS */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: box-shadow 0.2s, transform 0.2s; }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .card-icon { width: 40px; height: 40px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .card h3 { font-size: 1rem; font-weight: 600; color: var(--text); }
+    label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    textarea, input[type="text"], input[type="url"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; font-family: inherit; color: var(--text); background: var(--bg); resize: vertical; transition: border 0.2s; margin-bottom: 0.75rem; }
+    textarea:focus, input:focus { outline: none; border-color: var(--primary); }
+    button { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; width: 100%; margin-top: 0.25rem; }
+    button:hover { background: var(--primary-dark); }
+    button:active { transform: scale(0.98); }
+    .result { margin-top: 1rem; padding: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; font-size: 0.88rem; color: #15803d; display: none; }
+    .result.show { display: block; }
+    .result pre { white-space: pre-wrap; word-break: break-all; font-family: 'Courier New', monospace; font-size: 0.82rem; color: var(--text); background: white; padding: 10px; border-radius: 6px; border: 1px solid var(--border); margin-top: 8px; max-height: 220px; overflow-y: auto; }
+    .stat-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0.75rem; }
+    .stat { background: #eff6ff; border-radius: 8px; padding: 8px 12px; flex: 1; min-width: 80px; text-align: center; }
+    .stat-num { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--muted); }
+    .copy-btn { background: transparent; color: var(--primary); border: 1px solid var(--primary); width: auto; padding: 6px 14px; font-size: 0.8rem; margin-top: 6px; }
+    .copy-btn:hover { background: #eff6ff; }
+    .kw-list { margin-top: 8px; }
+    .kw-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .kw-item:last-child { border: none; }
+    .kw-count { font-weight: 600; color: var(--primary); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); background: white; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 1.4rem; }
+      .tools-grid { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>🔍 Free SEO Tools</h1>
+    <p>Fast, free, no signup required</p>
+  </div>
+  <nav>
+    <a href="#meta">Meta Tags</a>
+    <a href="#keyword">Keywords</a>
+    <a href="#wordcount">Word Count</a>
+    <a href="#sitemap">Sitemap</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>All-in-One Free SEO Toolkit</h2>
+  <p>Professional SEO tools for bloggers, developers, and marketers — 100% free.</p>
+</div>
+
+<div class="tools-grid">
+
+  <!-- 1. META TAG GENERATOR -->
+  <div class="card" id="meta">
+    <div class="card-header">
+      <div class="card-icon">🏷️</div>
+      <h3>Meta Tag Generator</h3>
+    </div>
+    <label>Page Title</label>
+    <input type="text" id="meta-title" placeholder="My Awesome Page Title" maxlength="60" />
+    <label>Description</label>
+    <textarea id="meta-desc" rows="2" placeholder="Short page description (max 160 chars)" maxlength="160"></textarea>
+    <label>Keywords</label>
+    <input type="text" id="meta-kw" placeholder="seo, tools, free" />
+    <label>Author</label>
+    <input type="text" id="meta-author" placeholder="Your Name" />
+    <button onclick="generateMeta()">Generate Meta Tags</button>
+    <div class="result" id="meta-result">
+      <strong>✅ Copy this into your &lt;head&gt;:</strong>
+      <pre id="meta-output"></pre>
+      <button class="copy-btn" onclick="copyText('meta-output')">📋 Copy Tags</button>
+    </div>
+  </div>
+
+  <!-- 2. KEYWORD DENSITY CHECKER -->
+  <div class="card" id="keyword">
+    <div class="card-header">
+      <div class="card-icon">🔑</div>
+      <h3>Keyword Density Checker</h3>
+    </div>
+    <label>Paste Your Content</label>
+    <textarea id="kw-text" rows="5" placeholder="Paste your article or blog post here..."></textarea>
+    <button onclick="checkKeywords()">Analyze Keywords</button>
+    <div class="result" id="kw-result">
+      <strong>Top Keywords:</strong>
+      <div class="kw-list" id="kw-output"></div>
+    </div>
+  </div>
+
+  <!-- 3. WORD & CHARACTER COUNTER -->
+  <div class="card" id="wordcount">
+    <div class="card-header">
+      <div class="card-icon">📝</div>
+      <h3>Word & Character Counter</h3>
+    </div>
+    <label>Enter Your Text</label>
+    <textarea id="wc-text" rows="5" placeholder="Type or paste your content here..." oninput="countWords()"></textarea>
+    <div class="stat-row" id="wc-stats">
+      <div class="stat"><div class="stat-num" id="wc-words">0</div><div class="stat-label">Words</div></div>
+      <div class="stat"><div class="stat-num" id="wc-chars">0</div><div class="stat-label">Characters</div></div>
+      <div class="stat"><div class="stat-num" id="wc-sentences">0</div><div class="stat-label">Sentences</div></div>
+      <div class="stat"><div class="stat-num" id="wc-paras">0</div><div class="stat-label">Paragraphs</div></div>
+    </div>
+  </div>
+
+  <!-- 4. SITEMAP GENERATOR -->
+  <div class="card" id="sitemap">
+    <div class="card-header">
+      <div class="card-icon">🗺️</div>
+      <h3>XML Sitemap Generator</h3>
+    </div>
+    <label>Your Website URL</label>
+    <input type="url" id="site-url" placeholder="https://yourdomain.com" />
+    <label>Pages (one per line)</label>
+    <textarea id="site-pages" rows="4" placeholder="/&#10;/about&#10;/contact&#10;/blog&#10;/services"></textarea>
+    <label>Change Frequency</label>
+    <select id="site-freq" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:0.92rem;margin-bottom:0.75rem;background:var(--bg);">
+      <option>weekly</option><option>daily</option><option>monthly</option><option>yearly</option>
+    </select>
+    <button onclick="generateSitemap()">Generate Sitemap</button>
+    <div class="result" id="sitemap-result">
+      <strong>✅ Your sitemap.xml:</strong>
+      <pre id="sitemap-output"></pre>
+      <button class="copy-btn" onclick="copyText('sitemap-output')">📋 Copy XML</button>
+    </div>
+  </div>
+
+  <!-- 5. OG TAG GENERATOR -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📣</div>
+      <h3>Open Graph Tag Generator</h3>
+    </div>
+    <label>Page Title</label>
+    <input type="text" id="og-title" placeholder="Your page title" />
+    <label>Description</label>
+    <textarea id="og-desc" rows="2" placeholder="Social media description"></textarea>
+    <label>Page URL</label>
+    <input type="url" id="og-url" placeholder="https://yoursite.com/page" />
+    <label>Image URL</label>
+    <input type="url" id="og-img" placeholder="https://yoursite.com/image.jpg" />
+    <button onclick="generateOG()">Generate OG Tags</button>
+    <div class="result" id="og-result">
+      <strong>✅ Open Graph Tags:</strong>
+      <pre id="og-output"></pre>
+      <button class="copy-btn" onclick="copyText('og-output')">📋 Copy Tags</button>
+    </div>
+  </div>
+
+  <!-- 6. ROBOTS.TXT GENERATOR -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🤖</div>
+      <h3>Robots.txt Generator</h3>
+    </div>
+    <label>Sitemap URL</label>
+    <input type="url" id="rb-sitemap" placeholder="https://yoursite.com/sitemap.xml" />
+    <label>Allow All Search Engines?</label>
+    <select id="rb-allow" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:0.92rem;margin-bottom:0.75rem;background:var(--bg);">
+      <option value="yes">Yes – Allow all bots</option>
+      <option value="no">No – Block all bots</option>
+      <option value="google">Google only</option>
+    </select>
+    <label>Disallow paths (one per line)</label>
+    <textarea id="rb-disallow" rows="3" placeholder="/admin&#10;/private&#10;/wp-login.php"></textarea>
+    <button onclick="generateRobots()">Generate robots.txt</button>
+    <div class="result" id="rb-result">
+      <strong>✅ Your robots.txt:</strong>
+      <pre id="rb-output"></pre>
+      <button class="copy-btn" onclick="copyText('rb-output')">📋 Copy File</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Free SEO Tools &nbsp;|&nbsp; 100% Free, No Signup, No Ads &nbsp;|&nbsp; Built with ❤️</p>
+  <p style="margin-top:6px; font-size:0.78rem;">All tools run in your browser — no data is sent to any server.</p>
+</footer>
+
+<script>
+function generateMeta() {
+  const title = document.getElementById('meta-title').value.trim();
+  const desc = document.getElementById('meta-desc').value.trim();
+  const kw = document.getElementById('meta-kw').value.trim();
+  const author = document.getElementById('meta-author').value.trim();
+  if (!title) { alert('Please enter a page title'); return; }
+  let tags = `<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>${title}</title>`;
+  if (desc) tags += `\n<meta name="description" content="${desc}">`;
+  if (kw) tags += `\n<meta name="keywords" content="${kw}">`;
+  if (author) tags += `\n<meta name="author" content="${author}">`;
+  tags += `\n<meta name="robots" content="index, follow">`;
+  document.getElementById('meta-output').textContent = tags;
+  showResult('meta-result');
+}
+
+function checkKeywords() {
+  const text = document.getElementById('kw-text').value.trim();
+  if (!text) { alert('Please paste some content'); return; }
+  const stopWords = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','may','might','this','that','these','those','i','you','he','she','it','we','they','my','your','his','her','our','its','their','not','so','if','as','by','from','up','out','about','into','through','after','over','also','more','than','then','when','where','which','who','how','what','all','any','both','each','few','just','only','even','such','no','nor']);
+  const words = text.toLowerCase().match(/\b[a-z]{3,}\b/g) || [];
+  const freq = {};
+  words.forEach(w => { if (!stopWords.has(w)) freq[w] = (freq[w] || 0) + 1; });
+  const sorted = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,15);
+  const total = words.length;
+  let html = '';
+  sorted.forEach(([word, count]) => {
+    const pct = ((count/total)*100).toFixed(1);
+    html += `<div class="kw-item"><span>${word}</span><span class="kw-count">${count}x &nbsp; ${pct}%</span></div>`;
+  });
+  document.getElementById('kw-output').innerHTML = html;
+  showResult('kw-result');
+}
+
+function countWords() {
+  const text = document.getElementById('wc-text').value;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = text.length;
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  const paras = text.split(/\n+/).filter(p => p.trim().length > 0).length;
+  document.getElementById('wc-words').textContent = words;
+  document.getElementById('wc-chars').textContent = chars;
+  document.getElementById('wc-sentences').textContent = sentences;
+  document.getElementById('wc-paras').textContent = paras;
+}
+
+function generateSitemap() {
+  const url = document.getElementById('site-url').value.trim().replace(/\/$/, '');
+  const pages = document.getElementById('site-pages').value.trim().split('\n').filter(p => p.trim());
+  const freq = document.getElementById('site-freq').value;
+  if (!url) { alert('Please enter your website URL'); return; }
+  const today = new Date().toISOString().split('T')[0];
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+  (pages.length ? pages : ['/']).forEach(page => {
+    const p = page.trim().startsWith('/') ? page.trim() : '/' + page.trim();
+    xml += `\n  <url>\n    <loc>${url}${p}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${p === '/' ? '1.0' : '0.8'}</priority>\n  </url>`;
+  });
+  xml += `\n</urlset>`;
+  document.getElementById('sitemap-output').textContent = xml;
+  showResult('sitemap-result');
+}
+
+function generateOG() {
+  const title = document.getElementById('og-title').value.trim();
+  const desc = document.getElementById('og-desc').value.trim();
+  const url = document.getElementById('og-url').value.trim();
+  const img = document.getElementById('og-img').value.trim();
+  if (!title) { alert('Please enter a page title'); return; }
+  let tags = `<meta property="og:type" content="website">`;
+  if (title) tags += `\n<meta property="og:title" content="${title}">`;
+  if (desc) tags += `\n<meta property="og:description" content="${desc}">`;
+  if (url) tags += `\n<meta property="og:url" content="${url}">`;
+  if (img) tags += `\n<meta property="og:image" content="${img}">`;
+  tags += `\n<meta name="twitter:card" content="summary_large_image">`;
+  if (title) tags += `\n<meta name="twitter:title" content="${title}">`;
+  if (desc) tags += `\n<meta name="twitter:description" content="${desc}">`;
+  document.getElementById('og-output').textContent = tags;
+  showResult('og-result');
+}
+
+function generateRobots() {
+  const sitemap = document.getElementById('rb-sitemap').value.trim();
+  const allow = document.getElementById('rb-allow').value;
+  const disallowLines = document.getElementById('rb-disallow').value.trim().split('\n').filter(l => l.trim());
+  let txt = '';
+  if (allow === 'yes') {
+    txt = 'User-agent: *\nAllow: /';
+  } else if (allow === 'no') {
+    txt = 'User-agent: *\nDisallow: /';
+  } else {
+    txt = 'User-agent: Googlebot\nAllow: /\n\nUser-agent: *\nDisallow: /';
+  }
+  disallowLines.forEach(line => { txt += `\nDisallow: ${line.trim()}`; });
+  if (sitemap) txt += `\n\nSitemap: ${sitemap}`;
+  document.getElementById('rb-output').textContent = txt;
+  showResult('rb-result');
+}
+
+function showResult(id) {
+  const el = document.getElementById(id);
+  el.classList.add('show');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function copyText(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => { alert('✅ Copied to clipboard!'); });
+}
+</script>
+</body>
+</html>
